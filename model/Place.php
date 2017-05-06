@@ -19,5 +19,5 @@ class Place
     public function place_multiview(){
 
         return "place_multiview";
-    }//KOROTKIY XYIE
+    }//KOROTKIY XYIE U ILUSHI
 }
