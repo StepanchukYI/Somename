@@ -11,9 +11,9 @@ class Author
     public function author_singleview($id){
 
         if($id=""){
-            $error = array('error' => "Failed id");
+            return array('error' => "Failed id");
         }
 
-        return "author_singleview";
-    }
+        return "author_singleview"; //coment
+    }//XYI
 }

@@ -11,7 +11,7 @@ class Place
     public function place_singleview($id){
 
         if($id=""){
-            $error = array('error' => "Failed id");
+            return array('error' => "Failed id");
         }
         return "place_singleview";
     }
