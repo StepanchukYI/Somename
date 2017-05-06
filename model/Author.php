@@ -15,5 +15,5 @@ class Author
         }
 
         return "author_singleview"; //coment
-    }
+    }//XYI
 }
