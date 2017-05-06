@@ -1,9 +1,9 @@
 <?php
 
-require __DIR__.'/../class/sqldb_connection.php';
-require '../model/Author.php';
-require '../model/Place.php';
-require __DIR__.'/../class/logging.php';
+require_once '../class/sqldb_connection.php';
+require_once  '../model/Author.php';
+require_once  '../model/Place.php';
+require_once  '../class/logging.php';
 
 
 $command = $_GET['command'];
@@ -29,4 +29,4 @@ switch ($command){
         break;
 }
 logging($id,json_encode($response),$command);
-echo $response;
+echo json_encode($response);
