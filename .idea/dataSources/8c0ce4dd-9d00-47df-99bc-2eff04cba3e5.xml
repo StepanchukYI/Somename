@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="Ekaterinoslav@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="ekaterinoslav">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="demo_app_development"/>
+    <schema id="4" parent="1" name="hw_6"/>
+    <schema id="5" parent="1" name="information_schema"/>
+    <schema id="6" parent="1" name="it-megabox-test"/>
+    <schema id="7" parent="1" name="laravel"/>
+    <schema id="8" parent="1" name="mysql"/>
+    <schema id="9" parent="1" name="performance_schema"/>
+    <schema id="10" parent="1" name="phpmyadmin"/>
+    <schema id="11" parent="1" name="ruby_db"/>
+    <schema id="12" parent="1" name="team_4"/>
+    <schema id="13" parent="1" name="test"/>
+    <schema id="14" parent="1" name="trustme_db"/>
+    <table id="15" parent="2" name="author"/>
+    <table id="16" parent="2" name="imageobject"/>
+    <table id="17" parent="2" name="location"/>
+    <table id="18" parent="2" name="place"/>
+    <table id="19" parent="2" name="placeauthor"/>
+    <column id="20" parent="15" name="idAuthor">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="21" parent="15" name="name">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="22" parent="15" name="biography">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="23" parent="15" name="SinglPhoto">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <index id="24" parent="15" name="Author_idAuthor_uindex">
+      <ColNames>idAuthor</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="25" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idAuthor</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="26" parent="15" name="Author_idAuthor_uindex">
+      <ColNames>idAuthor</ColNames>
+      <UnderlyingIndexName>Author_idAuthor_uindex</UnderlyingIndexName>
+    </key>
+    <column id="27" parent="16" name="idImage">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="28" parent="16" name="idPlace">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="29" parent="16" name="idAuthor">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="30" parent="16" name="url">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <index id="31" parent="16" name="ImageObject_idImage_uindex">
+      <ColNames>idImage</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="32" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idImage</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="33" parent="16" name="ImageObject_idImage_uindex">
+      <ColNames>idImage</ColNames>
+      <UnderlyingIndexName>ImageObject_idImage_uindex</UnderlyingIndexName>
+    </key>
+    <column id="34" parent="17" name="idLocation">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="35" parent="17" name="idPlace">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="36" parent="17" name="longitude">
+      <Position>3</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="37" parent="17" name="latitude">
+      <Position>4</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <index id="38" parent="17" name="Location_idLocation_uindex">
+      <ColNames>idLocation</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="39" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idLocation</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="40" parent="17" name="Location_idLocation_uindex">
+      <ColNames>idLocation</ColNames>
+      <UnderlyingIndexName>Location_idLocation_uindex</UnderlyingIndexName>
+    </key>
+    <column id="41" parent="18" name="idPlace">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="42" parent="18" name="title">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="43" parent="18" name="description">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="44" parent="18" name="SinglPhoto">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <index id="45" parent="18" name="Place_idPlace_uindex">
+      <ColNames>idPlace</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="46" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idPlace</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="47" parent="18" name="Place_idPlace_uindex">
+      <ColNames>idPlace</ColNames>
+      <UnderlyingIndexName>Place_idPlace_uindex</UnderlyingIndexName>
+    </key>
+    <column id="48" parent="19" name="idPlaceAuthor">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="49" parent="19" name="idPlace">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="50" parent="19" name="Author">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="51" parent="19" name="PlaceAuthor_idPlaceAuthor_uindex">
+      <ColNames>idPlaceAuthor</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="52" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idPlaceAuthor</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="53" parent="19" name="PlaceAuthor_idPlaceAuthor_uindex">
+      <ColNames>idPlaceAuthor</ColNames>
+      <UnderlyingIndexName>PlaceAuthor_idPlaceAuthor_uindex</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>
