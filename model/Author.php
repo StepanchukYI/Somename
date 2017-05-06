@@ -14,6 +14,6 @@ class Author
             return array('error' => "Failed id");
         }
 
-        return "author_singleview"; //coment
-    }//XYI
+        return "author_singleview";
+    }
 }

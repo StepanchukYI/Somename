@@ -26,5 +26,8 @@ class sqldb_connection
         }
     }
 
+    public function Place_multiview($id){
+
+    }
 
 }
