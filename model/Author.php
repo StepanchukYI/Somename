@@ -12,8 +12,10 @@ class Author
 
         if($id=""){
             return array('error' => "Failed id");
+        }else{
+            $array = sqldb_connection::Author_singleview($id);
+            array_push($array, array('Photo' => sqldb_connection::MultiPhoto_Author($id)));
+            return $array;
         }
-
-        return "author_singleview";
     }
 }

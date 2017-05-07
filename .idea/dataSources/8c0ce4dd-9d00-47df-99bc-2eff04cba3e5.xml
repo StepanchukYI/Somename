@@ -157,7 +157,7 @@
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="50" parent="19" name="Author">
+    <column id="50" parent="19" name="idAuthor">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
     </column>

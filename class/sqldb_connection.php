@@ -14,7 +14,7 @@ class sqldb_connection
         */
     private function DB_connect()
     {
-        $dsn = 'mysql:dbname=trustme_db;host=127.0.0.1';
+        $dsn = 'mysql:dbname=Ekaterinoslav;host=127.0.0.1';
         $user = 'root';
         $password = '';
 
@@ -26,8 +26,78 @@ class sqldb_connection
         }
     }
 
-    public function Place_multiview($id){
-//somefuu
+    public static function Place_multiview(){
+        $dbh = sqldb_connection::DB_connect();
+        $sth = $dbh->prepare("SELECT p.idPlace, p.title, p.description, l.latitude, l.longitude
+                                      FROM place p 
+                                      INNER JOIN location l 
+                                      ON p.idPlace = l.idPlace");
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function Author_multiview(){
+        $dbh = sqldb_connection::DB_connect();
+        $sth = $dbh->prepare("SELECT * FROM author");
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function Place_singleview($id){
+        $dbh = sqldb_connection::DB_connect();
+        $sth = $dbh->prepare("SELECT p.idPlace, p.title, p.description, l.latitude, l.longitude
+                                      FROM place p 
+                                      INNER JOIN location l 
+                                      ON p.idPlace = l.idPlace
+                                      WHERE p.idPlace = :id");
+        $sth->execute(array(':id' => $id));
+        return $sth->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function Author_singleview($id){
+        $dbh = sqldb_connection::DB_connect();
+        $sth = $dbh->prepare("SELECT * FROM author WHERE idAuthor = :id");
+        $sth->execute(array(':id' => $id));
+        return $sth->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function SinglePhoto_Author($id){
+        $dbh = sqldb_connection::DB_connect();
+
+        return "";
+    }
+
+    public static function Authorplace_multiview($id){
+        $dbh = sqldb_connection::DB_connect();
+        $sth = $dbh->prepare("SELECT a.idAuthor, a.name,a.SinglPhoto 
+                                 FROM author a
+                                 INNER JOIN placeauthor pa
+                                 ON pa.idAuthor = a.idAuthor
+                                 WHERE pa.idPlace = $id");
+        $sth->execute(array(':id' => $id));
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function SinglePhoto_Place($id){
+        $dbh = sqldb_connection::DB_connect();
+
+        return "";
+    }
+
+    public static function MultiPhoto_Author($id){
+        $dbh = sqldb_connection::DB_connect();
+        $sth = $dbh->prepare("SELECT url
+                                 FROM imageobject
+                                 WHERE idAuthor = $id");
+        $sth->execute(array(':id' => $id));
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function MultiPhoto_Place($id){
+        $dbh = sqldb_connection::DB_connect();
+        $sth = $dbh->prepare("SELECT url
+                                 FROM imageobject
+                                 WHERE idPlace = $id");
+        $sth->execute(array(':id' => $id));
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }
