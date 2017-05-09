@@ -11,19 +11,38 @@ class Place
 {
     public function place_singleview($id){
 
-        if($id==""){
-            return array('error' => "Failed id");
-        }else{
-            $array = sqldb_connection::Place_singleview($id);
-            array_push($array, array('Author' => sqldb_connection::Authorplace_multiview($id)));
-            array_push($array, array('Photo' => sqldb_connection::MultiPhoto_Place($id)));
+        $error = array();
+
+        if ($id == "") {
+            array_push($error, 'Failed id');
+        }
+
+        $array = sqldb_connection::Place_singleview($id);
+
+        if (count($array) == 0 || $array == false) {
+            array_push($error, 'Nothing');
+        }
+
+        if (count($error) == 0) {
+            $photo = sqldb_connection::MultiPhoto_Place($id);
+
+            if (count($photo) == 0) {
+                array_push($array, array('Photo' => "Haven`t photo"));
+            } else {
+                array_push($array, array('Photo' => $photo));
+            }
+
             return $array;
+
+        } else {
+            return array('error' => $error[0]);
         }
     }
 
+
     public function place_multiview(){
         $array = sqldb_connection::Place_multiview();
-        if(count($array) == 0){
+        if(count($array) == 0 || $array == false){
             return array('error' => "Nothing to show");
         }
         else{
