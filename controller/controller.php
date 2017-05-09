@@ -16,6 +16,9 @@ switch ($command){
     case "place_multiview":
         $response = $place->place_multiview();
         break;
+    case "author_multiview":
+        $response = $author->author_multiview();
+        break;
     case "place_singleview":
         $id = $_REQUEST['id'];
         $response = $place->place_singleview($id);
@@ -28,5 +31,6 @@ switch ($command){
         $response = "Error command";
         break;
 }
+
 logging($id,json_encode($response),$command);
 echo json_encode($response);

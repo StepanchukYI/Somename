@@ -28,16 +28,18 @@ class sqldb_connection
 
     public static function Place_multiview(){
         $dbh = sqldb_connection::DB_connect();
-        $sth = $dbh->prepare("SELECT p.idPlace, p.title, p.description, l.latitude, l.longitude
+        $sth = $dbh->prepare("SELECT p.idPlace, p.title, p.SinglPhoto, l.latitude, l.longitude
                                       FROM place p 
                                       INNER JOIN location l 
                                       ON p.idPlace = l.idPlace");
+        $sth->execute();
         return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public static function Author_multiview(){
         $dbh = sqldb_connection::DB_connect();
-        $sth = $dbh->prepare("SELECT * FROM author");
+        $sth = $dbh->prepare("SELECT idAuthor, name, biography, SinglPhoto FROM author");
+        $sth->execute();
         return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -59,12 +61,6 @@ class sqldb_connection
         return $sth->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function SinglePhoto_Author($id){
-        $dbh = sqldb_connection::DB_connect();
-
-        return "";
-    }
-
     public static function Authorplace_multiview($id){
         $dbh = sqldb_connection::DB_connect();
         $sth = $dbh->prepare("SELECT a.idAuthor, a.name,a.SinglPhoto 
@@ -76,17 +72,11 @@ class sqldb_connection
         return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function SinglePhoto_Place($id){
-        $dbh = sqldb_connection::DB_connect();
-
-        return "";
-    }
-
     public static function MultiPhoto_Author($id){
         $dbh = sqldb_connection::DB_connect();
         $sth = $dbh->prepare("SELECT url
                                  FROM imageobject
-                                 WHERE idAuthor = $id");
+                                 WHERE idAuthor = :id");
         $sth->execute(array(':id' => $id));
         return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
